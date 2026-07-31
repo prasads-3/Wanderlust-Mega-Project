@@ -11,7 +11,7 @@ pipeline {
         string(name: 'BACKEND_DOCKER_TAG', defaultValue: '', description: 'Setting docker image for latest push')
     }
     
-    stages 
+    stages {
         stage("Validate Parameters") {
             steps {
                 script {
