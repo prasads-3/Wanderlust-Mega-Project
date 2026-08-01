@@ -149,15 +149,23 @@ pipeline {
 
         stage("GitOps: Update Repository") {
             steps {
-                script {
-                    dir("Automations") {
-                        sh """
-                            export BACKEND_DOCKER_TAG=${params.BACKEND_DOCKER_TAG}
-                            export FRONTEND_DOCKER_TAG=${params.FRONTEND_DOCKER_TAG}
+                withCredentials([usernamePassword(
+                    credentialsId: 'github-token',
+                    usernameVariable: 'GITHUB_USER',
+                    passwordVariable: 'GITHUB_TOKEN'
+                )]) {
+                    script {
+                        dir("Automations") {
+                            sh """
+                                export BACKEND_DOCKER_TAG=${params.BACKEND_DOCKER_TAG}
+                                export FRONTEND_DOCKER_TAG=${params.FRONTEND_DOCKER_TAG}
+                                export GITHUB_USER=\$GITHUB_USER
+                                export GITHUB_TOKEN=\$GITHUB_TOKEN
 
-                            chmod +x update-gitops.sh
-                            ./update-gitops.sh
-                        """
+                                chmod +x update-gitops.sh
+                                ./update-gitops.sh
+                            """
+                        }
                     }
                 }
             }
@@ -177,5 +185,4 @@ pipeline {
             echo "CI Pipeline Completed Successfully."
         }
     }
-
 }
