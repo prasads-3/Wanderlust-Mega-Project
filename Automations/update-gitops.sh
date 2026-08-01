@@ -8,7 +8,7 @@ echo "====================================="
 
 rm -rf /tmp/wanderlust-gitops
 
-git clone https://github.com/prasads-3/wanderlust-gitops.git /tmp/wanderlust-gitops
+git clone https://${GITHUB_USER}:${GITHUB_TOKEN}@github.com/prasads-3/wanderlust-gitops.git /tmp/wanderlust-gitops
 
 cd /tmp/wanderlust-gitops
 
