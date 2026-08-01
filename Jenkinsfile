@@ -146,19 +146,36 @@ pipeline {
                 }
             }
         }
+
+        stage("GitOps: Update Repository") {
+            steps {
+                script {
+                    dir("Automations") {
+                        sh """
+                            export BACKEND_DOCKER_TAG=${params.BACKEND_DOCKER_TAG}
+                            export FRONTEND_DOCKER_TAG=${params.FRONTEND_DOCKER_TAG}
+
+                            chmod +x update-gitops.sh
+                            ./update-gitops.sh
+                        """
+                    }
+                }
+            }
+        }
+
     }
 
     post {
-    success {
+        success {
 
-        archiveArtifacts(
-            artifacts: '**/*.xml',
-            allowEmptyArchive: true,
-            followSymlinks: false
-        )
+            archiveArtifacts(
+                artifacts: '**/*.xml',
+                allowEmptyArchive: true,
+                followSymlinks: false
+            )
 
-        echo "CI Pipeline Completed Successfully."
+            echo "CI Pipeline Completed Successfully."
+        }
     }
-}
 
 }
