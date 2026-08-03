@@ -68,3 +68,54 @@ This architecture separates application delivery from infrastructure management,
 | Operating System | Ubuntu Linux |
 
 ---
+---
+
+## 🚀 DevSecOps CI/CD Pipeline
+
+The project implements an automated DevSecOps pipeline that integrates continuous integration, security scanning, containerization, GitOps deployment, and monitoring. Every code change follows a standardized workflow before reaching the Kubernetes cluster.
+
+```text
+Developer
+    │
+    ▼
+GitHub
+    │
+    ▼
+Jenkins
+    │
+    ├── Checkout Source Code
+    ├── Build Application
+    ├── SonarQube Analysis
+    ├── Quality Gate
+    ├── Trivy Security Scan
+    ├── Build Docker Images
+    ├── Push Images to Docker Hub
+    ├── Update GitOps Repository
+    ▼
+ArgoCD
+    ▼
+Kubernetes
+    ▼
+Prometheus
+    ▼
+Grafana
+    ▼
+Alertmanager
+```
+
+### Pipeline Stages
+
+| Stage | Description |
+|--------|-------------|
+| Source Control | Developers push code changes to GitHub. |
+| Continuous Integration | Jenkins automatically triggers the pipeline. |
+| Code Quality | SonarQube performs static code analysis and validates code quality. |
+| Security Scan | Trivy scans container images for known vulnerabilities. |
+| Containerization | Docker builds and pushes images to Docker Hub. |
+| GitOps Deployment | Jenkins updates Kubernetes manifests in the GitOps repository. |
+| Continuous Deployment | ArgoCD synchronizes the desired state with the Kubernetes cluster. |
+| Monitoring | Prometheus collects infrastructure and application metrics. |
+| Visualization | Grafana displays dashboards for real-time monitoring. |
+| Alerting | Alertmanager sends notifications based on Prometheus alert rules. |
+
+---
