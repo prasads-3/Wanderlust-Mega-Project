@@ -23,3 +23,6 @@ The infrastructure is designed to simulate a real-world production environment b
 - Generate alerts using Alertmanager and custom Prometheus alert rules.
 
 ---
+
+## 🏗️ Solution Architecture
+  <img width="700" height="700" alt="ChatGPT Image Aug 4, 2026, 12_09_12 AM" src="https://github.com/user-attachments/assets/197519d4-05bd-4c22-854b-4ad1dcad6b1b" />
