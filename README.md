@@ -26,3 +26,24 @@ The infrastructure is designed to simulate a real-world production environment b
 
 ## 🏗️ Solution Architecture
   <img width="700" height="700" alt="ChatGPT Image Aug 4, 2026, 12_09_12 AM" src="https://github.com/user-attachments/assets/197519d4-05bd-4c22-854b-4ad1dcad6b1b" />
+---
+
+## 🏗️ Architecture
+
+The project follows a modern DevSecOps and GitOps workflow where every code change is automatically validated, secured, deployed, monitored, and continuously reconciled with the desired Kubernetes state.
+
+The workflow consists of the following stages:
+
+1. Source Code Management
+2. Continuous Integration (Jenkins)
+3. Static Code Analysis (SonarQube)
+4. Container Security Scanning (Trivy)
+5. Docker Image Build & Push
+6. GitOps Manifest Update
+7. Continuous Deployment (ArgoCD)
+8. Kubernetes Deployment
+9. Monitoring (Prometheus)
+10. Visualization (Grafana)
+11. Alerting (Alertmanager)
+
+This architecture separates application delivery from infrastructure management, ensuring reproducibility, traceability, and automated recovery from configuration drift.
