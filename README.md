@@ -119,3 +119,54 @@ Alertmanager
 | Alerting | Alertmanager sends notifications based on Prometheus alert rules. |
 
 ---
+---
+
+## 🔄 GitOps Workflow
+
+The project follows a GitOps-based deployment model where Git acts as the single source of truth for Kubernetes application configuration.
+
+Instead of directly deploying applications from the CI pipeline, Jenkins updates the GitOps repository with the latest deployment changes. ArgoCD continuously monitors the repository and automatically synchronizes the desired state with the Kubernetes cluster.
+
+```mermaid
+flowchart LR
+
+A[Developer] --> B[Application Repository]
+
+B --> C[Jenkins Pipeline]
+
+C --> D[Build & Security Validation]
+
+D --> E[Docker Image Push]
+
+E --> F[Update Kubernetes Manifest]
+
+F --> G[GitOps Repository]
+
+G --> H[ArgoCD]
+
+H --> I[Kubernetes Cluster]
+
+I --> J[Running Application]
+```
+
+### GitOps Process
+
+| Step | Description |
+|------|-------------|
+| 1 | Developer pushes application code changes to GitHub. |
+| 2 | Jenkins executes CI pipeline for build, testing, quality analysis, and security scanning. |
+| 3 | Docker images are built and pushed to the container registry. |
+| 4 | Kubernetes manifest files are updated in the GitOps repository. |
+| 5 | ArgoCD detects repository changes automatically. |
+| 6 | ArgoCD synchronizes the desired configuration with Kubernetes. |
+| 7 | Kubernetes maintains the application state using declarative manifests. |
+
+### GitOps Benefits
+
+- Declarative infrastructure management.
+- Git as the single source of truth.
+- Automated deployment synchronization.
+- Easy rollback using Git history.
+- Improved deployment visibility and auditability.
+
+---
