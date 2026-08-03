@@ -170,3 +170,50 @@ I --> J[Running Application]
 - Improved deployment visibility and auditability.
 
 ---
+---
+
+---
+
+## 📊 Monitoring & Observability
+
+The Wanderlust platform includes a complete monitoring and observability stack to track Kubernetes cluster health, application performance, and operational metrics.
+
+The monitoring architecture uses Prometheus for metrics collection, Grafana for visualization, and Alertmanager for intelligent alert handling.
+
+```mermaid
+flowchart LR
+
+A[Kubernetes Cluster] --> B[Prometheus]
+
+B --> C[Node Exporter]
+B --> D[cAdvisor]
+B --> E[Kubernetes Metrics]
+
+B --> F[Grafana]
+
+B --> G[Alertmanager]
+
+G --> H[Notifications]
+```
+
+### Monitoring Components
+
+| Component | Purpose |
+|-----------|---------|
+| Prometheus | Collects and stores time-series metrics from Kubernetes and application workloads. |
+| Grafana | Provides interactive dashboards for monitoring infrastructure and application performance. |
+| Alertmanager | Processes Prometheus alerts and sends notifications based on defined rules. |
+| Node Exporter | Collects host-level metrics such as CPU, memory, disk, and network usage. |
+| cAdvisor | Provides container-level resource usage and performance metrics. |
+| Kubernetes Metrics | Provides cluster and workload health information. |
+
+### Observability Features
+
+- Real-time Kubernetes cluster monitoring.
+- Application and container resource tracking.
+- CPU, memory, disk, and network utilization monitoring.
+- Custom Prometheus alert rules.
+- Grafana dashboards for visualization.
+- Alert-based incident detection.
+
+---
