@@ -47,3 +47,24 @@ The workflow consists of the following stages:
 11. Alerting (Alertmanager)
 
 This architecture separates application delivery from infrastructure management, ensuring reproducibility, traceability, and automated recovery from configuration drift.
+
+---
+
+## 🛠️ Technology Stack
+
+| Category | Technologies |
+|----------|--------------|
+| Version Control | Git, GitHub |
+| Continuous Integration | Jenkins |
+| Code Quality | SonarQube |
+| Security Scanning | Trivy |
+| Containerization | Docker |
+| Container Registry | Docker Hub |
+| Orchestration | Kubernetes (Kind) |
+| GitOps | ArgoCD |
+| Monitoring | Prometheus |
+| Visualization | Grafana |
+| Alerting | Alertmanager |
+| Operating System | Ubuntu Linux |
+
+---
