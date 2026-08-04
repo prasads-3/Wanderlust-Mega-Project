@@ -2,6 +2,7 @@ import compression from 'compression';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import express from 'express';
+import { register } from './metrics/prometheus.js';
 import connectDB from './config/db.js';
 import { PORT } from './config/utils.js';
 import authRouter from './routes/auth.js';
@@ -25,6 +26,10 @@ connectToRedis();
 // API route
 app.use('/api/posts', postsRouter);
 app.use('/api/auth', authRouter);
+app.get('/metrics', async (req, res) => {
+  res.set('Content-Type', register.contentType);
+  res.end(await register.metrics());
+});
 
 app.get('/', (req, res) => {
   res.send('Yay!! Backend of wanderlust prod app is now accessible');
