@@ -264,3 +264,83 @@ G --> H[Kubernetes Deployment]
 - Improved application reliability and security posture.
 
 ---
+---
+
+# 📸 CI/CD Pipeline
+
+The project implements a production-style CI/CD pipeline using Jenkins. Every code change triggers an automated workflow that performs source code checkout, static code analysis, security scanning, Docker image creation, image publishing, and GitOps repository updates.
+
+### Jenkins Pipeline Stage View
+
+The Jenkins pipeline automates the complete DevSecOps workflow from source code checkout to GitOps deployment.
+
+![Jenkins Pipeline Stage View](screenshots/cicd/01-jenkins-stage-view.png)
+
+### SonarQube Quality Gate
+
+The Quality Gate ensures that only code meeting predefined quality standards proceeds further in the deployment pipeline.
+
+![SonarQube Quality Gate](screenshots/cicd/03-sonarqube-quality-gate.png)
+### Docker Image Registry
+
+After successful validation, versioned Docker images are automatically pushed to Docker Hub, enabling Kubernetes deployments through GitOps.
+
+![Docker Hub Repository](screenshots/cicd/04-dockerhub-frontend-tags.png)
+
+### SonarQube Dashboard
+
+SonarQube performs static code analysis to identify bugs, code smells, vulnerabilities, and maintainability issues before deployment.
+
+![SonarQube Dashboard](screenshots/cicd/02-sonarqube-dashboard.png)
+
+---
+
+# 🚀 GitOps Deployment
+
+The project follows GitOps principles using ArgoCD. Once Jenkins updates the Kubernetes manifests in the GitOps repository with the latest Docker image tags, ArgoCD automatically detects the changes, synchronizes the desired state, and deploys the updated application to the Kubernetes cluster.
+
+This approach ensures declarative deployments, version-controlled infrastructure, automated synchronization, and simplified rollback capabilities.
+
+### ArgoCD Dashboard
+
+The ArgoCD dashboard continuously monitors the GitOps repository and keeps the Kubernetes cluster synchronized with the desired application state.
+
+![ArgoCD Dashboard](screenshots/gitops/05-argocd-dashboard.png)
+---
+
+# ☸️ Kubernetes Deployment
+
+The Wanderlust application is deployed on a Kubernetes cluster using declarative manifests. The deployment includes frontend, backend, MongoDB, Redis, services, persistent storage, and networking resources managed through Kubernetes.
+
+### Running Kubernetes Pods
+
+The following screenshot shows all application components successfully running inside the Kubernetes cluster.
+
+![Kubernetes Pods](screenshots/kubernetes/06-kubectl-pods.png)
+---
+
+# 📊 Monitoring & Observability
+
+The monitoring stack is built using Prometheus, Grafana, and Alertmanager to provide real-time visibility into the Kubernetes cluster and application health.
+
+Prometheus continuously collects metrics from Kubernetes components and workloads, Grafana visualizes these metrics through interactive dashboards, and Alertmanager manages alert notifications based on custom Prometheus rules.
+### Prometheus Targets
+
+Prometheus successfully discovers and scrapes metrics from Kubernetes components, ensuring continuous monitoring across the cluster.
+
+![Prometheus Targets](screenshots/monitoring/07-prometheus-targets.png)
+### Prometheus Alert Rules
+
+Custom alert rules continuously monitor the application and cluster health to detect failures and abnormal conditions.
+
+![Prometheus Alerts](screenshots/monitoring/08-prometheus-alerts.png)
+### Grafana Overview Dashboard
+
+Grafana provides an overall view of monitoring data collected from Prometheus, including request metrics, latency, and active alerts.
+
+![Grafana Overview](screenshots/monitoring/09-grafana-overview-dashboard.png)
+### Kubernetes Cluster Dashboard
+
+This dashboard visualizes CPU, memory, workload, and resource utilization across the Kubernetes cluster.
+
+![Kubernetes Cluster Dashboard](screenshots/monitoring/10-grafana-kubernetes-cluster.png)
