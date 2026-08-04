@@ -2,7 +2,7 @@
 
 > A production-style DevSecOps and GitOps implementation for the Wanderlust application using Jenkins, SonarQube, Trivy, Docker, Kubernetes, ArgoCD, Prometheus, Grafana, and Alertmanager.
 
----
+--- 
 
 ## 📖 Project Overview
 
