@@ -217,3 +217,50 @@ G --> H[Notifications]
 - Alert-based incident detection.
 
 ---
+---
+
+## 🔐 Security Features
+
+Security is integrated throughout the software delivery lifecycle by implementing automated code analysis, vulnerability scanning, and secure container practices.
+
+The project follows a DevSecOps approach where security checks are performed during the CI pipeline before application deployment.
+
+### Security Components
+
+| Component | Purpose |
+|-----------|---------|
+| SonarQube | Performs static code analysis to identify code quality issues, bugs, and security vulnerabilities. |
+| Quality Gate | Ensures that code meets defined quality standards before continuing the pipeline. |
+| Trivy | Scans Docker images for known vulnerabilities and security risks. |
+| Docker Security Practices | Uses optimized container images and secure image-building practices. |
+| GitOps Security | Maintains version-controlled Kubernetes configurations with complete audit history. |
+
+### Security Workflow
+
+```mermaid
+flowchart LR
+
+A[Developer Commit] --> B[GitHub]
+
+B --> C[Jenkins Pipeline]
+
+C --> D[SonarQube Analysis]
+
+D --> E[Quality Gate]
+
+E --> F[Trivy Image Scan]
+
+F --> G[Docker Image]
+
+G --> H[Kubernetes Deployment]
+```
+
+### DevSecOps Benefits
+
+- Early detection of code vulnerabilities.
+- Automated security validation during CI.
+- Reduced risk of deploying vulnerable container images.
+- Traceable changes through Git history.
+- Improved application reliability and security posture.
+
+---
